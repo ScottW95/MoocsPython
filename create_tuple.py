@@ -1,0 +1,25 @@
+#Please write a function named 
+# create_tuple(x: int, y: int, z: int), 
+# which takes three integers as its arguments, 
+# and creates and returns a tuple based on the 
+# # following criteria:
+
+#     The first element in the tuple is the smallest of the arguments
+#     The second element in the tuple is the greatest of the arguments
+#     The third element in the tuple is the sum of the arguments
+
+
+def create_tuple(x:int,y: int,z:int):
+    least = min(x,y,z)
+
+    most = max(x,y,z)
+
+    sum_of = x+y+z
+
+    combo = (least,most,sum_of)
+
+    return combo
+
+# print(create_tuple(5,3,-1))
+
+
