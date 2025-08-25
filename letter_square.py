@@ -10,11 +10,22 @@
 # assume there will be at most 26 layers.
 import string
 
-layers = int(input('Layers:'))
+
+while True:
+    try:
+        layers = int(input('Layers:'))
+    except ValueError:
+        print('Invalid input. Please enter an integer between 1 and 26')
+        continue
+
+    if layers > 26 or layers < 1:
+        print("You're entry is out of bounds, please enter again")
+        continue
+    else:
+        break
+    
 
 total_layers = (layers*2)-1
-
-print(total_layers)
 
 alpha = string.ascii_uppercase
 
@@ -22,24 +33,36 @@ layer_list = []
 
 letter = alpha[layers-1]
 
-middle_layer = []
+first_layer = []
 
-for i in range(layers-1,-1,-1):
-    middle_layer.append(alpha[i])
-
-for i in range(len(middle_layer)-2,-1,-1):
-    middle_layer.append(middle_layer[i])
-
-str_middle_layer = ''.join(middle_layer)
-
-print(str_middle_layer)
-
-for i in range(layers,-1,-1):
-
-    if i == (layers):
-        layer_list.append(middle_layer)
+for i in range(0,layers):
+    if i == 0:
+        for j in range(0,total_layers):
+            first_layer.append(letter)
+        
+        layer_list.append(first_layer)
     else:
-        for j in range(layers)
+        next_letter = alpha[(layers-1)-i]
+
+        next_layer = layer_list[i-1].copy()
+
+        for j in range(i,((total_layers-i))):
+
+            next_layer[j] = next_letter
+
+        layer_list.append(next_layer)
+
+for i in range(layers-2,-1,-1):
+    copy_layer = layer_list[i].copy()
+
+    layer_list.append(copy_layer)
+            
+
+for inex,layer in enumerate(layer_list):
+    print(''.join(layer))
+
+
+
 
 
     
